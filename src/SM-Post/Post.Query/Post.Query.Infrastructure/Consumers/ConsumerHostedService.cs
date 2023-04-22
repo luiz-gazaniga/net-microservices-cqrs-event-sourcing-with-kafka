@@ -1,7 +1,11 @@
+using System.Text.Json;
+using Confluent.Kafka;
 using CQRS.Core.Consumers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using Post.Common.Events;
 
 namespace Post.Query.Infrastructure.Consumers
 {
@@ -18,7 +22,7 @@ namespace Post.Query.Infrastructure.Consumers
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation("Event consumer service running.");
+            _logger.LogInformation("Event Consumer Service running.");
 
             using (IServiceScope scope = _serviceProvider.CreateScope())
             {
@@ -33,7 +37,7 @@ namespace Post.Query.Infrastructure.Consumers
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation("Event consumer service stopped.");
+            _logger.LogInformation("Event Consumer Service Stopped");
 
             return Task.CompletedTask;
         }

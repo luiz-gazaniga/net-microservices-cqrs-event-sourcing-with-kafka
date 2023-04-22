@@ -13,7 +13,9 @@ namespace Post.Query.Infrastructure.Consumers
         private readonly ConsumerConfig _config;
         private readonly IEventHandler _eventHandler;
 
-        public EventConsumer(IOptions<ConsumerConfig> config, IEventHandler eventHandler)
+        public EventConsumer(
+            IOptions<ConsumerConfig> config,
+            IEventHandler eventHandler)
         {
             _config = config.Value;
             _eventHandler = eventHandler;
@@ -22,9 +24,9 @@ namespace Post.Query.Infrastructure.Consumers
         public void Consume(string topic)
         {
             using var consumer = new ConsumerBuilder<string, string>(_config)
-                        .SetKeyDeserializer(Deserializers.Utf8)
-                        .SetValueDeserializer(Deserializers.Utf8)
-                        .Build();
+                    .SetKeyDeserializer(Deserializers.Utf8)
+                    .SetValueDeserializer(Deserializers.Utf8)
+                    .Build();
 
             consumer.Subscribe(topic);
 
