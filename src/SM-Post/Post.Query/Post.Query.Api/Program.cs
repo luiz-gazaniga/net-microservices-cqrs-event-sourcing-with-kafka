@@ -38,7 +38,7 @@ dispatcher.RegisterHandler<FindPostByIdQuery>(queryHandler.HandleAsync);
 dispatcher.RegisterHandler<FindPostsByAuthorQuery>(queryHandler.HandleAsync);
 dispatcher.RegisterHandler<FindPostsWithCommentsQuery>(queryHandler.HandleAsync);
 dispatcher.RegisterHandler<FindPostsWithLikesQuery>(queryHandler.HandleAsync);
-builder.Services.AddSingleton<IQueryDispatcher<PostEntity>>(_ => dispatcher);
+builder.Services.AddScoped<IQueryDispatcher<PostEntity>>(_ => dispatcher);
 
 builder.Services.AddControllers();
 builder.Services.AddHostedService<ConsumerHostedService>();
