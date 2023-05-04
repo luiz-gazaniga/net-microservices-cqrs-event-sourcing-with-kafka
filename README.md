@@ -165,15 +165,8 @@ docker run -d --name sql-container \
 -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=$tr0ngS@P@ssw0rd02' -e 'MSSQL_PID=Express' \
 -p 1433:1433 mcr.microsoft.com/mssql/server:2017-latest-ubuntu 
 
-Run in Docker:
-docker run -it -d --name mongo-container \
--p 27017:27017 --network mydockernetwork \
---restart always \
--v mongodb_data_container:/data/db \
-mongo:latest
-
-Download Client Tools – Robo 3T:
-https://robomongo.org/download
+#10. PostgreSQL
+> docker run -d --name posgres-container -p 5432:5432 --network mydockernetwork -e POSTGRES_PASSWORD=postgresPsw --restart always -v postgresql_data:/var/lib/postgresql/data postgres:latest
 
 > dotnet restore
 
@@ -187,7 +180,3 @@ https://robomongo.org/download
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- [Axon Framework](https://axoniq.io/) - for providing inspiration and best practices for implementing CQRS and Event Sourcing.
